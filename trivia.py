@@ -17,6 +17,10 @@ def answerLayout(answerList, questionType):
         } 
     return answerDict
 
+def displayCorrectAnswer(correctAnswer):
+    print("The correct answer is: " + correctAnswer)
+    
+
 def playTrivia():
     response = requests.get("https://opentdb.com/api.php?amount=10")
     questionList = response.json()['results']
@@ -55,6 +59,7 @@ def playTrivia():
                 break
             elif userAnswer in answers:
                 print("\033[31mSorry wrong answer!\033[0m")
+                displayCorrectAnswer(question['correct_answer'])
                 print("-----------------------------------------------------------------------")
                 incorrectCount += 1
                 break
